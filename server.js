@@ -17,11 +17,11 @@ connectDB();
 app.use(express.json());
 app.use(morgan("dev"));
 
-//Routes
+
 app.use("/api/v6/artistes", artistesRoute);
 app.use("/api/v6/users", usersRoute);
 
-//Default / Home route
+
 app.get("/", (req, res) => {
   res.send("<h2> Welcome to Ghana artistes API.</h2>");
 });

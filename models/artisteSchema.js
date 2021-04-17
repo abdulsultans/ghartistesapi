@@ -6,7 +6,7 @@ const bloggerSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    blog: {
+    label: {
       type: String,
       required: true,
     },

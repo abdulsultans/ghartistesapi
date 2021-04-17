@@ -1,5 +1,4 @@
 const express = require("express");
-const protect = require("../middlewares/authMiddlewares")
 
 const {
   createArtiste,
@@ -11,11 +10,11 @@ const {
 
 const router = express.Router();
 
-router.route("/").post(protect, createArtiste).get(protect, getAllArtistes);
+router.route("/").post(createArtiste).get( getAllArtistes);
 router
   .route("/:_id")
-  .get(protect, getSingleArtiste)
-  .put(protect, updateArtiste)
-  .delete(protect, deleteArtiste);
+  .get(getSingleArtiste)
+  .put(updateArtiste)
+  .delete(deleteArtiste);
 
 module.exports = router;

@@ -1,10 +1,10 @@
-const Blogger = require("../models/artisteSchema");
+const Artiste = require("../models/artisteSchema");
 
-// Add a new blogger to the database
+// Add a new Artiste to the database
 const createArtiste = async (req, res) => {
   const newArtiste = new Artiste({
     name: req.body.name,
-    blog: req.body.blog,
+    label: req.body.label,
     email: req.body.email,
     dob: req.body.dob,
     region: req.body.region,
@@ -14,7 +14,7 @@ const createArtiste = async (req, res) => {
   res.status(202).json(newArtiste);
 };
 
-//GET all bloggers on the database
+//GET all Artistes on the database
 
 const getAllArtistes = async (req, res) => {
   const Artistes = await Artiste.find();
@@ -32,11 +32,11 @@ const getSingleArtiste = async (req, res) => {
 const updateArtiste = async (req, res) => {
   const foundArtiste = await Artiste.findById(req.params._id);
 
-  const { name, blog, email, dob, region } = req.body;
+  const { name, label, email, dob, region } = req.body;
 
   if (foundArtiste) {
     foundArtiste.name = name;
-    foundArtiste.blog = blog;
+    foundArtiste.label = label;
     foundArtiste.email = email;
     foundArtiste.dob = dob;
     foundArtiste.region = region;
@@ -52,9 +52,9 @@ const deleteArtiste = async (req, res) => {
   const foundArtiste = await Artiste.findById(req.params._id);
   if (foundArtiste) {
     foundArtiste.remove();
-    res.json({ msg: `${foundArtiste.name} removed`});
+    res.json({ msg: `${foundArtiste.name} Artiste deleted!`});
   } else {
-    res.status(404).json({ error: "Artiste not found" });
+    res.status(404).json({ error: "Artiste not found!" });
   }
 };
 
